@@ -103,6 +103,7 @@ npm run dev
 
 ### 지원 모델
 - `deepseek-r1:latest` (기본값)
+- `exaone3.5:latest`
 - 기타 Ollama에서 지원하는 모든 모델
 
 ## 📁 프로젝트 구조
@@ -164,28 +165,6 @@ NextAuth.js를 사용한 세션 기반 인증:
 - 세션 관리
 - 권한 기반 접근 제어
 
-## 🚀 배포
-
-### Vercel 배포 (권장)
-1. Vercel 계정 생성
-2. GitHub 저장소 연결
-3. 환경 변수 설정 (Ollama URL 포함)
-4. 자동 배포
-
-### 기타 플랫폼
-- Netlify, Railway, AWS, Docker
-
-## 🤝 기여하기
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 라이선스
-
-이 프로젝트는 MIT 라이선스 하에 배포됩니다.
 
 ---
 
