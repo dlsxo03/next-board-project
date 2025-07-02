@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  password  String
+  nickname  String
+  role      Role      @default(USER)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  notices   Notice[]
+  posts     Post[]
+  comments  Comment[]
+
+  @@map("users")
+}
+
+model Notice {
+  id        String   @id @default(uuid())
+  title     String
+  content   String   @db.Text
+  authorId  String   @map("author_id")
+  isPinned  Boolean  @default(false) @map("is_pinned")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  author    User     @relation(fields: [authorId], references: [id])
+
+  @@map("notices")
+}
+
+model Post {
+  id        String    @id @default(uuid())
+  title     String
+  content   String    @db.Text
+  authorId  String    @map("author_id")
+  category  String
+  imageUrl  String?   @map("image_url")
+  viewCount Int       @default(0) @map("view_count")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  author    User      @relation(fields: [authorId], references: [id])
+  comments  Comment[]
+
+  @@map("posts")
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  content   String
+  postId    String   @map("post_id")
+  authorId  String   @map("author_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  author    User     @relation(fields: [authorId], references: [id])
+
+  @@map("comments")
+}
+
+enum Role {
+  ADMIN
+  USER
+}

@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+  }
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* 마크다운 전용 스타일 */
+.markdown-body {
+  font-size: 1rem;
+  line-height: 1.7;
+  word-break: break-word;
+}
+.markdown-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 8px 0;
+  background: #23272e;
+  color: #fff;
+}
+.markdown-body th, .markdown-body td {
+  border: 1px solid #444;
+  padding: 4px 8px;
+}
+.markdown-body th {
+  background: #1e2228;
+  font-weight: bold;
+}
+.markdown-body tr {
+  border-bottom: 1px solid #444;
+}
+.markdown-body p {
+  margin: 4px 0;
+}
+.markdown-body ul, .markdown-body ol {
+  margin: 8px 0 8px 20px;
+}
+.markdown-body code {
+  background: #1e2228;
+  color: #60a5fa;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+.markdown-body pre {
+  background: #1e2228;
+  color: #60a5fa;
+  padding: 8px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 8px 0;
+} 
